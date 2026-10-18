@@ -42,9 +42,14 @@ const countEl = document.getElementById('count');
 const themeBtn = document.getElementById('themeToggle');
 const favFilterBtn = document.getElementById('favFilter');
 const freeFilterBtn = document.getElementById('freeFilter');
-const sortSel = document.getElementById('sort');
+const sortBox = document.getElementById('sortBox');
+const sortBtn = document.getElementById('sortBtn');
+const sortMenu = document.getElementById('sortMenu');
+const sortLabel = document.getElementById('sortLabel');
 const toastEl = document.getElementById('toast');
 const toolbar = document.querySelector('.toolbar');
+
+const SORT_LABELS = { default: 'ترتیب پیش‌فرض', alpha: 'الفبایی', used: 'پرکاربردترین' };
 
 const faNum = n => n.toLocaleString('fa-IR');
 
@@ -137,7 +142,7 @@ function readHash() {
   onlyFree = p.get('free') === '1';
   sortMode = ['default', 'alpha', 'used'].includes(p.get('sort')) ? p.get('sort') : 'default';
   searchInput.value = query;
-  sortSel.value = sortMode;
+  applySortUI();
 }
 
 function writeHash() {
@@ -284,9 +289,64 @@ chips.addEventListener('click', e => {
   render();
 });
 
-sortSel.addEventListener('change', () => {
-  sortMode = sortSel.value;
+/* ─────────────── دراپ‌داون مرتب‌سازی ─────────────── */
+function applySortUI() {
+  sortLabel.textContent = SORT_LABELS[sortMode];
+  sortMenu.querySelectorAll('[role="option"]').forEach(b =>
+    b.setAttribute('aria-selected', String(b.dataset.sort === sortMode)));
+}
+
+function openSortMenu(focusFirst = false) {
+  sortMenu.hidden = false;
+  sortBox.classList.add('open');
+  sortBtn.setAttribute('aria-expanded', 'true');
+  if (focusFirst) sortMenu.querySelector('[aria-selected="true"]')?.focus();
+}
+function closeSortMenu(refocus = false) {
+  if (sortMenu.hidden) return;
+  sortMenu.hidden = true;
+  sortBox.classList.remove('open');
+  sortBtn.setAttribute('aria-expanded', 'false');
+  if (refocus) sortBtn.focus();
+}
+
+sortBtn.addEventListener('click', () => {
+  sortMenu.hidden ? openSortMenu() : closeSortMenu();
+});
+sortMenu.addEventListener('click', e => {
+  const opt = e.target.closest('[role="option"]');
+  if (!opt) return;
+  sortMode = opt.dataset.sort;
+  applySortUI();
+  closeSortMenu(true);
   render();
+});
+document.addEventListener('click', e => {
+  if (!sortBox.contains(e.target)) closeSortMenu();
+});
+sortBtn.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openSortMenu(true);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    openSortMenu(true);
+  }
+});
+sortMenu.addEventListener('keydown', e => {
+  const opts = [...sortMenu.querySelectorAll('[role="option"]')];
+  const i = opts.indexOf(document.activeElement);
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeSortMenu(true);
+  } else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    opts[Math.min(i + 1, opts.length - 1)]?.focus();
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (i <= 0) closeSortMenu(true);
+    else opts[i - 1]?.focus();
+  }
 });
 
 grid.addEventListener('click', e => {
@@ -348,11 +408,14 @@ document.addEventListener('keydown', e => {
   const typing = tag === 'INPUT' || tag === 'TEXTAREA';
   if ((e.key === '/' || ((e.key === 'k' || e.key === 'K') && (e.ctrlKey || e.metaKey))) && !typing) {
     e.preventDefault();
+    closeSortMenu();
     searchInput.focus();
     searchInput.select();
   }
   if (e.key === 'Escape') {
-    if (document.activeElement === searchInput) {
+    if (!sortMenu.hidden) {
+      closeSortMenu(true);
+    } else if (document.activeElement === searchInput) {
       searchInput.value = ''; query = '';
       render();
       searchInput.blur();
@@ -369,7 +432,7 @@ document.getElementById('clearBtn').addEventListener('click', () => {
   onlyFav = false;
   onlyFree = false;
   sortMode = 'default';
-  sortSel.value = 'default';
+  applySortUI();
   renderChips(); render();
   searchInput.focus();
 });

@@ -91,14 +91,27 @@
         <div class="toggles" role="group" aria-label="فیلترهای سریع">
           <button class="chip toggle" id="favFilter" type="button" aria-pressed="false">⭐ ستاره‌دارها</button>
           <button class="chip toggle" id="freeFilter" type="button" aria-pressed="false">رایگان</button>
-          <label class="sort">
+          <div class="sort" id="sortBox">
             <span class="sr-only">مرتب‌سازی</span>
-            <select id="sort">
-              <option value="default">ترتیب پیش‌فرض</option>
-              <option value="alpha">الفبایی</option>
-              <option value="used">پرکاربردترین</option>
-            </select>
-          </label>
+            <button class="sort-btn" id="sortBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span id="sortLabel">ترتیب پیش‌فرض</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="sort-menu" id="sortMenu" role="listbox" aria-labelledby="sortBtn" hidden>
+              <button type="button" role="option" data-sort="default" aria-selected="true">
+                <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.2 17 19 7"/></svg>
+                ترتیب پیش‌فرض
+              </button>
+              <button type="button" role="option" data-sort="alpha">
+                <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.2 17 19 7"/></svg>
+                الفبایی
+              </button>
+              <button type="button" role="option" data-sort="used">
+                <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.2 17 19 7"/></svg>
+                پرکاربردترین
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <nav class="chips" id="chips" aria-label="دسته‌بندی‌ها"></nav>
