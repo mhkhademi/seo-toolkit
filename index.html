@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جعبه‌ابزار سئو — مجموعه ابزارهای سئو، محتوا و تبلیغات</title>
+  <meta name="description" content="مجموعه ابزارهای روزمره سئو، محتوا و تبلیغات؛ جستجو، فیلتر و ستاره‌دار کنید. آفلاین و نصب‌پذیر به‌صورت اپ.">
+  <meta name="theme-color" content="#0a0d18">
+  <meta name="color-scheme" content="dark light">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="جعبه‌ابزار سئو">
+  <meta property="og:title" content="جعبه‌ابزار سئو">
+  <meta property="og:description" content="ابزارهای روزمره سئو، محتوا و تبلیغات — جستجو، فیلتر و ستاره‌دار کنید">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:image" content="icons/icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="جعبه‌ابزار سئو">
+  <meta name="twitter:description" content="ابزارهای روزمره سئو، محتوا و تبلیغات — یک‌جا و همیشه در دسترس">
+  <meta name="twitter:image" content="icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "جعبه‌ابزار سئو",
+    "alternateName": "SEO Toolbox",
+    "description": "مجموعه ابزارهای روزمره سئو، محتوا و تبلیغات با جستجوی فارسی‌پسند، فیلتر دسته‌بندی و علاقه‌مندی",
+    "inLanguage": "fa",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IRR" },
+    "featureList": [
+      "جستجوی فارسی‌پسند در نام، توضیح و تگ",
+      "فیلتر دسته‌بندی، رایگان و ستاره‌دارها",
+      "آمار مصرف و مرتب‌سازی پرکاربردترین‌ها",
+      "حالت آفلاین و نصب‌پذیر (PWA)"
+    ]
+  }
+  </script>
+
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem('seo-theme') ||
+      (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  </script>
+  <link rel="preload" href="fonts/vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8b7cff"/><stop offset="1" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="14" fill="url(#brandGrad)"/>
+          <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round">
+            <circle cx="28.2" cy="28.2" r="13.1"/><path d="M37.7 37.7 47 47"/>
+          </g>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>جعبه‌ابزار سئو</h1>
+        <p>ابزارهای روزمره سئو، محتوا و تبلیغات — جستجو، فیلتر و ستاره‌دار کنید</p>
+      </div>
+      <div class="header-actions">
+        <span class="count" id="count"></span>
+        <button class="icon-btn" id="themeToggle" title="تغییر تم" aria-label="تغییر تم"></button>
+      </div>
+    </div>
+  </header>
+
+  <div id="stickySentinel" aria-hidden="true"></div>
+  <div class="toolbar">
+    <div class="wrap">
+      <div class="search-row">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="search" type="search" placeholder="جستجو در نام، توضیح یا تگ…" autocomplete="off" enterkeyhint="search">
+          <kbd>/</kbd>
+        </div>
+        <div class="toggles" role="group" aria-label="فیلترهای سریع">
+          <button class="chip toggle" id="favFilter" type="button" aria-pressed="false">⭐ ستاره‌دارها</button>
+          <button class="chip toggle" id="freeFilter" type="button" aria-pressed="false">رایگان</button>
+          <label class="sort">
+            <span class="sr-only">مرتب‌سازی</span>
+            <select id="sort">
+              <option value="default">ترتیب پیش‌فرض</option>
+              <option value="alpha">الفبایی</option>
+              <option value="used">پرکاربردترین</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <nav class="chips" id="chips" aria-label="دسته‌بندی‌ها"></nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <div class="emoji">🔍</div>
+      <h2>چیزی پیدا نشد</h2>
+      <p>عبارت دیگری را جستجو کنید یا فیلترها را عوض کنید.</p>
+      <button type="button" id="clearBtn">پاک کردن فیلترها</button>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>ستاره‌دارها بالای لیست می‌مانند</span>
+      <span class="dot">·</span>
+      <span><kbd>/</kbd> جستجو</span>
+      <span class="dot">·</span>
+      <span><kbd>Enter</kbd> باز کردن اولین نتیجه</span>
+      <span class="dot">·</span>
+      <span><kbd>↑↓</kbd> جابجایی بین نتایج</span>
+      <span class="dot">·</span>
+      <span><kbd>Esc</kbd> پاک کردن</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
