@@ -143,6 +143,54 @@
       ]
     },
     {
+      "id": "tasmino",
+      "name": "تسمینو",
+      "desc": "پلتفرم سئو و بازاریابی محتوایی فارسی",
+      "url": "https://www.tasmino.com",
+      "domain": "tasmino.com",
+      "cat": "iranian",
+      "color": "#0EA5E9",
+      "free": false,
+      "tags": [
+        "کلمه کلیدی",
+        "بهینه‌سازی محتوا",
+        "رتبه‌یابی",
+        "سئو محتوا"
+      ]
+    },
+    {
+      "id": "najva",
+      "name": "نجوا",
+      "desc": "بازاریابی نگه‌داشت با پوش نوتیفیکیشن، پیامک و ایمیل",
+      "url": "https://najva.com",
+      "domain": "najva.com",
+      "cat": "iranian",
+      "color": "#EC4899",
+      "free": false,
+      "tags": [
+        "پوش نوتیفیکیشن",
+        "نوتیفیکیشن",
+        "بازاریابی نگه‌داشت",
+        "پیامک"
+      ]
+    },
+    {
+      "id": "triboon",
+      "name": "تریبون",
+      "desc": "پلتفرم تبلیغات محتوایی و رپورتاژ در رسانه‌های ایرانی",
+      "url": "https://triboon.ir",
+      "domain": "triboon.ir",
+      "cat": "iranian",
+      "color": "#F59E0B",
+      "free": false,
+      "tags": [
+        "تبلیغات محتوایی",
+        "رپورتاژ",
+        "بک‌لینک",
+        "برندینگ"
+      ]
+    },
+    {
       "id": "gsc",
       "name": "Google Search Console",
       "desc": "بررسی ایندکس، کلیک‌ها و وضعیت سایت در نتایج گوگل",
@@ -705,7 +753,7 @@
       "desc": "ثبت و مدیریت کسب‌وکار روی نقشه نشان",
       "url": "https://maps.neshan.org",
       "domain": "maps.neshan.org",
-      "cat": "local",
+      "cat": "iranian",
       "color": "#E11D48",
       "free": true,
       "tags": [
@@ -753,7 +801,7 @@
       "desc": "بزرگ‌ترین پلتفرم تبلیغات کلیکی و نمایشی ایران",
       "url": "https://yektanet.com",
       "domain": "yektanet.com",
-      "cat": "ads",
+      "cat": "iranian",
       "color": "#EAB308",
       "free": false,
       "tags": [
@@ -768,7 +816,7 @@
       "desc": "پلتفرم تبلیغات آنلاین و درون‌برنامه‌ای",
       "url": "https://tapsell.ir",
       "domain": "tapsell.ir",
-      "cat": "ads",
+      "cat": "iranian",
       "color": "#3B82F6",
       "free": false,
       "tags": [
@@ -783,7 +831,7 @@
       "desc": "تبلیغات کلیکی هدفمند همراه آنالیز رایگان سایت",
       "url": "https://sorenad.com/free-site-analysis",
       "domain": "sorenad.com",
-      "cat": "ads",
+      "cat": "iranian",
       "color": "#DC2626",
       "free": false,
       "tags": [
@@ -798,7 +846,7 @@
       "desc": "ارسال پوش نوتیفیکیشن به کاربران وب و موبایل",
       "url": "https://pushe.co",
       "domain": "pushe.co",
-      "cat": "ads",
+      "cat": "iranian",
       "color": "#9333EA",
       "free": false,
       "tags": [
