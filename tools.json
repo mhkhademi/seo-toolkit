@@ -1012,6 +1012,38 @@
         "لینک شکسته",
         "کروم"
       ]
+    },
+    {
+      "id": "seoreviewtools",
+      "name": "SEO Review Tools",
+      "desc": "جعبه‌ابزار رایگان سئو: تحلیل دامنه، رنک چکر و ابزارهای هوش مصنوعی",
+      "url": "https://www.seoreviewtools.com",
+      "domain": "seoreviewtools.com",
+      "cat": "technical",
+      "color": "#0891B2",
+      "free": true,
+      "tags": [
+        "آنالیز دامنه",
+        "رنک چکر",
+        "کلمه کلیدی",
+        "ابزار رایگان"
+      ]
+    },
+    {
+      "id": "seoptimer",
+      "name": "SEOptimer",
+      "desc": "آنالیز و ممیزی رایگان سئوی سایت با گزارش بهبود",
+      "url": "https://www.seoptimer.com",
+      "domain": "seoptimer.com",
+      "cat": "technical",
+      "color": "#4D7C0F",
+      "free": true,
+      "tags": [
+        "آنالیز سایت",
+        "ممیزی سئو",
+        "گزارش بهبود",
+        "سئو تکنیکال"
+      ]
     }
   ]
 }
