@@ -78,6 +78,7 @@ const tokensOf = q => norm(q).split(/\s+/).filter(Boolean);
 function hayOf(t) {
   return norm([
     t.name, t.desc, t.url, t.domain, CATS[t.cat],
+    ...(t.iranian ? [CATS.iranian] : []),
     ...(t.tags || [])
   ].join(' '));
 }
@@ -125,10 +126,15 @@ window.logoFallback = function (img) {
   }
 };
 
+/* عضویت در دسته: دستهٔ «ایرانی» علاوه بر cat اصلی، پرچم iranian را هم در بر می‌گیرد */
+function inCat(t, catId) {
+  return t.cat === catId || (catId === 'iranian' && t.iranian === true);
+}
+
 function toolMatches(t, tokens) {
   if (onlyFav && !favorites.has(t.url)) return false;
   if (onlyFree && t.free !== true) return false;
-  if (activeCat !== 'all' && t.cat !== activeCat) return false;
+  if (activeCat !== 'all' && !inCat(t, activeCat)) return false;
   if (!tokens.length) return true;
   const hay = hayOf(t);
   return tokens.every(w => hay.includes(w));
@@ -227,14 +233,15 @@ function render(withAnim = true) {
 }
 
 function renderChips() {
-  const tokens = tokensOf(query);
   const counts = {};
+  let visibleTotal = 0;
   TOOLS.forEach(t => {
     if (onlyFav && !favorites.has(t.url)) return;
     if (onlyFree && t.free !== true) return;
+    visibleTotal++;
     counts[t.cat] = (counts[t.cat] || 0) + 1;
+    if (t.iranian && t.cat !== 'iranian') counts.iranian = (counts.iranian || 0) + 1;
   });
-  const visibleTotal = Object.values(counts).reduce((a, b) => a + b, 0);
   const items = [['all', 'همه', visibleTotal],
     ...Object.entries(CATS)
       .map(([k, label]) => [k, label, counts[k] || 0])
@@ -439,7 +446,7 @@ document.getElementById('clearBtn').addEventListener('click', () => {
 
 favFilterBtn.addEventListener('click', () => {
   onlyFav = !onlyFav;
-  if (onlyFav && activeCat !== 'all' && !TOOLS.some(t => t.cat === activeCat && favorites.has(t.url))) {
+  if (onlyFav && activeCat !== 'all' && !TOOLS.some(t => inCat(t, activeCat) && favorites.has(t.url))) {
     activeCat = 'all';
   }
   renderChips();

@@ -50,6 +50,7 @@
       "url": "https://rankfind.net",
       "domain": "rankfind.net",
       "cat": "iranian",
+      "iranian": true,
       "color": "#14B8A6",
       "free": true,
       "tags": [
@@ -68,6 +69,7 @@
       "url": "https://keywordchi.com",
       "domain": "keywordchi.com",
       "cat": "iranian",
+      "iranian": true,
       "color": "#10B981",
       "free": true,
       "tags": [
@@ -85,6 +87,7 @@
       "url": "https://www.jetseo.ir",
       "domain": "jetseo.ir",
       "cat": "iranian",
+      "iranian": true,
       "color": "#F43F5E",
       "free": true,
       "tags": [
@@ -101,6 +104,7 @@
       "url": "https://aryaseo.net",
       "domain": "aryaseo.net",
       "cat": "iranian",
+      "iranian": true,
       "color": "#06B6D4",
       "free": false,
       "tags": [
@@ -117,6 +121,7 @@
       "url": "https://www.analytics.upseo.ir",
       "domain": "analytics.upseo.ir",
       "cat": "iranian",
+      "iranian": true,
       "color": "#7C3AED",
       "free": true,
       "tags": [
@@ -133,6 +138,7 @@
       "url": "https://seo-analyzer.nakhostin.com",
       "domain": "seo-analyzer.nakhostin.com",
       "cat": "iranian",
+      "iranian": true,
       "color": "#0D9488",
       "free": true,
       "tags": [
@@ -148,7 +154,8 @@
       "desc": "پلتفرم سئو و بازاریابی محتوایی فارسی",
       "url": "https://www.tasmino.com",
       "domain": "tasmino.com",
-      "cat": "iranian",
+      "cat": "content",
+      "iranian": true,
       "color": "#0EA5E9",
       "free": false,
       "tags": [
@@ -164,7 +171,8 @@
       "desc": "بازاریابی نگه‌داشت با پوش نوتیفیکیشن، پیامک و ایمیل",
       "url": "https://najva.com",
       "domain": "najva.com",
-      "cat": "iranian",
+      "cat": "ads",
+      "iranian": true,
       "color": "#EC4899",
       "free": false,
       "tags": [
@@ -180,7 +188,8 @@
       "desc": "پلتفرم تبلیغات محتوایی و رپورتاژ در رسانه‌های ایرانی",
       "url": "https://triboon.ir",
       "domain": "triboon.ir",
-      "cat": "iranian",
+      "cat": "ads",
+      "iranian": true,
       "color": "#F59E0B",
       "free": false,
       "tags": [
@@ -753,7 +762,8 @@
       "desc": "ثبت و مدیریت کسب‌وکار روی نقشه نشان",
       "url": "https://maps.neshan.org",
       "domain": "maps.neshan.org",
-      "cat": "iranian",
+      "cat": "local",
+      "iranian": true,
       "color": "#E11D48",
       "free": true,
       "tags": [
@@ -801,7 +811,8 @@
       "desc": "بزرگ‌ترین پلتفرم تبلیغات کلیکی و نمایشی ایران",
       "url": "https://yektanet.com",
       "domain": "yektanet.com",
-      "cat": "iranian",
+      "cat": "ads",
+      "iranian": true,
       "color": "#EAB308",
       "free": false,
       "tags": [
@@ -816,7 +827,8 @@
       "desc": "پلتفرم تبلیغات آنلاین و درون‌برنامه‌ای",
       "url": "https://tapsell.ir",
       "domain": "tapsell.ir",
-      "cat": "iranian",
+      "cat": "ads",
+      "iranian": true,
       "color": "#3B82F6",
       "free": false,
       "tags": [
@@ -831,7 +843,8 @@
       "desc": "تبلیغات کلیکی هدفمند همراه آنالیز رایگان سایت",
       "url": "https://sorenad.com/free-site-analysis",
       "domain": "sorenad.com",
-      "cat": "iranian",
+      "cat": "ads",
+      "iranian": true,
       "color": "#DC2626",
       "free": false,
       "tags": [
@@ -846,7 +859,8 @@
       "desc": "ارسال پوش نوتیفیکیشن به کاربران وب و موبایل",
       "url": "https://pushe.co",
       "domain": "pushe.co",
-      "cat": "iranian",
+      "cat": "ads",
+      "iranian": true,
       "color": "#9333EA",
       "free": false,
       "tags": [
