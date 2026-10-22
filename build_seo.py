@@ -8,7 +8,7 @@ build_seo.py — تولید خودکار بخش‌های سئو از tools.json
 """
 import json, re, html, datetime, pathlib
 
-SITE = "http://seo.mhkhademi87.ir/"   # بعد از فعال‌شدن HTTPS به https:// تغییر دهید
+SITE = "https://seo.mhkhademi87.ir/"
 ROOT = pathlib.Path(__file__).parent
 
 data = json.loads((ROOT / "tools.json").read_text(encoding="utf-8"))
