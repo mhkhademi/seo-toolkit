@@ -707,7 +707,7 @@ footer .dot {
 }
 
 @media (max-width: 767px) {
-    .chips {
+    .chips.can-scroll {
         -webkit-mask-image: linear-gradient(to left, transparent 0, #000 28px);
         mask-image: linear-gradient(to left, transparent 0, #000 28px);
     }
