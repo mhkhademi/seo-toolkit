@@ -14,8 +14,10 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+import hashlib
 import json
 import pathlib
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -73,6 +75,7 @@ def sync() -> int:
     DATA_JS.write_text(
         "window.SEO_DATA = " + json.dumps(payload, ensure_ascii=False) + ";\n",
         encoding="utf-8")
+    bump_asset_versions()
 
     print(f"data.js ساخته شد: {len(cats)} دسته، {len(tools)} ابزار")
     if problems:
@@ -82,6 +85,26 @@ def sync() -> int:
         return 1
     print("اعتبارسنجی: بدون ایراد ✔")
     return 0
+
+
+# ───────────────────────────── cache busting ─────────────────────────────
+
+def bump_asset_versions() -> None:
+    """تزریق ?v=هش‌محتوا به ارجاعات استاتیک در index.html.
+
+    هاست برای CSS/JS هدر max-age=۷روزه می‌فرستد؛ با تغییر هش، آدرس فایل
+    عوض می‌شود و کش مرورگر کاربران بعد از هر تغییر می‌شکند.
+    """
+    idx = ROOT / "index.html"
+    src = idx.read_text(encoding="utf-8")
+    for name in ("style.css", "fonts.css", "script.js", "data.js"):
+        path = ROOT / name
+        if not path.exists():
+            continue
+        digest = hashlib.sha1(path.read_bytes()).hexdigest()[:8]
+        src = re.sub(rf"({re.escape(name)})(\?v=[a-f0-9]+)?([\"'])",
+                     lambda m: f"{m.group(1)}?v={digest}{m.group(3)}", src)
+    idx.write_text(src, encoding="utf-8")
 
 
 # ───────────────────────────── icons ─────────────────────────────

@@ -7,7 +7,7 @@
    نتیجه: آنلاین همیشه به‌روز، آفلاین کامل کار می‌کند.
    ──────────────────────────────────────────────────────────── */
 
-const VERSION = 'seo-toolbox-v2';
+const VERSION = 'seo-toolbox-v3';
 const CORE = [
   './',
   './index.html',
@@ -60,7 +60,8 @@ self.addEventListener('fetch', e => {
   e.respondWith((async () => {
     const cache = await caches.open(VERSION);
     try {
-      const fresh = await fetch(req);
+      // ناوبری همیشه تازه از شبکه؛ دارایی‌های ?v= هش‌دار از کش HTTP (heuristic) هم استفاده می‌کنند
+      const fresh = await fetch(req, req.mode === 'navigate' ? { cache: 'no-store' } : undefined);
       if (fresh.ok) cache.put(req, fresh.clone());
       return fresh;
     } catch {
