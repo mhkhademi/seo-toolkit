@@ -250,16 +250,7 @@ function renderChips() {
     `<button class="chip ${k === activeCat ? 'active' : ''}" type="button" data-cat="${k}">
        ${esc(label)}<span class="n">${faNum(n)}</span>
      </button>`).join('');
-  updateChipFade();
 }
-
-/* محوی لبهٔ چپ فقط وقتی محتوای بیشتری برای دیدن باشد، نه روی آخرین چیپ */
-function updateChipFade() {
-  const max = chips.scrollWidth - chips.clientWidth;
-  chips.classList.toggle('can-scroll', max > 1 && Math.abs(chips.scrollLeft) < max - 1);
-}
-chips.addEventListener('scroll', updateChipFade, { passive: true });
-window.addEventListener('resize', updateChipFade);
 
 function rememberOpen(url) {
   stats[url] = (stats[url] || 0) + 1;

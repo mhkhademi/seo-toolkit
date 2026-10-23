@@ -706,13 +706,6 @@ footer .dot {
     box-shadow: var(--shadow);
 }
 
-@media (max-width: 767px) {
-    .chips.can-scroll {
-        -webkit-mask-image: linear-gradient(to left, transparent 0, #000 28px);
-        mask-image: linear-gradient(to left, transparent 0, #000 28px);
-    }
-}
-
 @media (max-width: 560px) {
     header {
         padding-top: 20px;
