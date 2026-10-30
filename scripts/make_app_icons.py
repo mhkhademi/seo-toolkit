@@ -19,7 +19,7 @@ import pathlib
 
 from PIL import Image, ImageDraw
 
-ROOT = pathlib.Path(__file__).parent
+ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "icons"
 
 ACCENT_A = (139, 124, 255)      # --accent   بنفش

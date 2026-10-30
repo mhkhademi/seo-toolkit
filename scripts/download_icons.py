@@ -33,7 +33,8 @@ try:
 except ImportError:
     sys.exit("Pillow نصب نیست.  pip install Pillow")
 
-ROOT = pathlib.Path(__file__).parent
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
 OUT = ROOT / "icons"
 SIZE = 64                     # ۲ برابر اندازهٔ نمایش (۲۸px) برای صفحه‌های رتینا
 TIMEOUT = 12
@@ -283,7 +284,7 @@ def write_manifest(have: set[str]) -> None:
     """فهرست دامنه‌هایی که آیکون محلی دارند را در icons.json می‌نویسد."""
     import json
     payload = {"size": SIZE, "default": f"icons/default.png", "domains": sorted(have)}
-    (ROOT / "icons.json").write_text(
+    (DATA / "icons.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
@@ -294,7 +295,7 @@ def local_icon_stems() -> set[str]:
 
 def read_tools() -> list[dict]:
     import json
-    data = json.loads((ROOT / "tools.json").read_text(encoding="utf-8"))
+    data = json.loads((DATA / "tools.json").read_text(encoding="utf-8"))
     return data["tools"]
 
 

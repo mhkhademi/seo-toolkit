@@ -7,16 +7,15 @@
    نتیجه: آنلاین همیشه به‌روز، آفلاین کامل کار می‌کند.
    ──────────────────────────────────────────────────────────── */
 
-const VERSION = 'seo-toolbox-v3';
+const VERSION = 'seo-toolbox-v14';
 const CORE = [
   './',
   './index.html',
   './style.css',
-  './fonts.css',
   './script.js',
-  './data.js',
-  './tools.json',
-  './icons.json',
+  './data/data.js',
+  './data/tools.json',
+  './data/icons.json',
   './manifest.webmanifest',
   './favicon.svg',
   './favicon.ico',
@@ -32,7 +31,7 @@ self.addEventListener('install', e => {
     const cache = await caches.open(VERSION);
     await cache.addAll(CORE);
     try {
-      const r = await fetch('./icons.json', { cache: 'no-store' });
+      const r = await fetch('./data/icons.json', { cache: 'no-store' });
       if (r.ok) {
         const pack = await r.json();
         await cache.addAll((pack.domains || []).map(d => `./icons/${d}.png`));
@@ -60,9 +59,11 @@ self.addEventListener('fetch', e => {
   e.respondWith((async () => {
     const cache = await caches.open(VERSION);
     try {
-      // ناوبری همیشه تازه از شبکه؛ دارایی‌های ?v= هش‌دار از کش HTTP (heuristic) هم استفاده می‌کنند
-      const fresh = await fetch(req, req.mode === 'navigate' ? { cache: 'no-store' } : undefined);
-      if (fresh.ok) cache.put(req, fresh.clone());
+      // برای ناوبری و فایل‌های اصلی، با تایم‌اوت شبکه چک می‌شود تا کندی شبکه باعث فریز صفحه نشود
+      const fetchPromise = fetch(req, req.mode === 'navigate' ? { cache: 'no-store' } : undefined);
+      const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 1800));
+      const fresh = await Promise.race([fetchPromise, timeoutPromise]);
+      if (fresh && fresh.ok) cache.put(req, fresh.clone());
       return fresh;
     } catch {
       const hit = (await cache.match(req))
